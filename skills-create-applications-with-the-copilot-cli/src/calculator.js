@@ -1,48 +1,63 @@
-/**
- * Calculator module
- *
- * Supported operations (based on image):
- *  - addition: add or + (a + b)
- *  - subtraction: sub or - or − (a - b)
- *  - multiplication: mul or * or x or × (a * b)
- *  - division: div or / or ÷ (a / b)
- */
+﻿#!/usr/bin/env node
 
-function parseNumber(s) {
-  const n = Number(s);
-  if (Number.isNaN(n)) {
-    throw new Error(`Invalid number: ${s}`);
-  }
-  return n;
+// Node.js CLI Calculator
+// Supported operations (as shown in provided image):
+//  - Addition (+)
+//  - Subtraction (-)
+//  - Multiplication (× or *)
+//  - Division (÷ or /)
+
+function printUsage() {
+  console.log('Usage: node src/calculator.js <operator> <number1> <number2>');
+  console.log('Operators: +  -  *  /  ×  ÷  (also: add, sub, mul, div)');
+  process.exit(1);
 }
 
-function calculate(op, a, b) {
-  switch (String(op).toLowerCase()) {
-    case 'add':
-    case '+':
-      return a + b;
-    case 'sub':
-    case 'subtract':
-    case '-':
-    case '−':
-      return a - b;
-    case 'mul':
-    case 'multiply':
-    case '*':
-    case 'x':
-    case '×':
-      return a * b;
-    case 'div':
-    case 'divide':
-    case '/':
-    case '÷':
-      if (b === 0) {
-        throw new Error('Division by zero');
-      }
-      return a / b;
-    default:
-      throw new Error(`Unknown operation: ${op}`);
-  }
+const [, , opRaw, aRaw, bRaw] = process.argv;
+if (!opRaw || !aRaw || !bRaw) printUsage();
+
+const a = Number(aRaw);
+const b = Number(bRaw);
+if (Number.isNaN(a) || Number.isNaN(b)) {
+  console.error('Error: number1 and number2 must be valid numbers.');
+  process.exit(2);
 }
 
-module.exports = { parseNumber, calculate };
+const op = opRaw.trim().toLowerCase();
+
+function divide(x, y) {
+  if (y === 0) {
+    console.error('Error: Division by zero is not allowed.');
+    process.exit(3);
+  }
+  return x / y;
+}
+
+let result;
+switch (op) {
+  case '+':
+  case 'add':
+    result = a + b;
+    break;
+  case '-':
+  case 'sub':
+    result = a - b;
+    break;
+  case '*':
+  case 'x':
+  case '×':
+  case 'mul':
+    result = a * b;
+    break;
+  case '/':
+  case '÷':
+  case 'div':
+    result = divide(a, b);
+    break;
+  default:
+    console.error(`Unsupported operator: ${opRaw}`);
+    printUsage();
+}
+
+// Print the result
+console.log(result);
