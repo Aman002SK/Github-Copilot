@@ -1,0 +1,10 @@
+{
+  "name": "github-copilot-calculator",
+  "version": "0.1.0",
+  "bin": {
+    "calc": "src/index.js"
+  },
+  "type": "commonjs",
+  "description": "Simple Node.js CLI calculator supporting add, sub, mul, div",
+  "license": "MIT"
+}
