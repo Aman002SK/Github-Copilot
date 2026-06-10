@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1781072666169" clover="3.2.0">
+  <project timestamp="1781072666170" name="All files">
+    <metrics statements="13" coveredstatements="12" conditionals="20" coveredconditionals="19" methods="2" coveredmethods="2" elements="35" coveredelements="33" complexity="0" loc="13" ncloc="13" packages="1" files="1" classes="1"/>
+    <file name="calculator.js" path="C:\Users\raiji\OneDrive\Desktop\Github-Copilot\src\calculator.js">
+      <metrics statements="13" coveredstatements="12" conditionals="20" coveredconditionals="19" methods="2" coveredmethods="2"/>
+      <line num="12" count="2" type="stmt"/>
+      <line num="13" count="2" type="cond" truecount="1" falsecount="1"/>
+      <line num="14" count="2" type="stmt"/>
+      <line num="16" count="0" type="stmt"/>
+      <line num="20" count="27" type="cond" truecount="16" falsecount="0"/>
+      <line num="23" count="6" type="stmt"/>
+      <line num="28" count="5" type="stmt"/>
+      <line num="34" count="6" type="stmt"/>
+      <line num="39" count="8" type="cond" truecount="2" falsecount="0"/>
+      <line num="40" count="3" type="stmt"/>
+      <line num="42" count="5" type="stmt"/>
+      <line num="44" count="2" type="stmt"/>
+      <line num="48" count="2" type="stmt"/>
+    </file>
+  </project>
+</coverage>
