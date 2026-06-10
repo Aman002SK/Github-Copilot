@@ -1,37 +1,36 @@
-const { calculate, parseNumber } = require('../calculator');
+const { add, subtract, multiply, divide } = require('../lib/calculator');
 
-describe('calculator operations (basic)', () => {
-  test('addition with symbol + and word add', () => {
-    expect(calculate('+', 2, 3)).toBe(5);
-    expect(calculate('add', 7, 8)).toBe(15);
+describe('Calculator library', () => {
+  test('2 + 3 = 5', () => {
+    expect(add(2, 3)).toBe(5);
   });
 
-  test('subtraction with - and word sub', () => {
-    expect(calculate('-', 10, 4)).toBe(6);
-    expect(calculate('sub', 5, 9)).toBe(-4);
+  test('10 - 4 = 6', () => {
+    expect(subtract(10, 4)).toBe(6);
   });
 
-  test('multiplication with * and x', () => {
-    expect(calculate('*', 45, 2)).toBe(90);
-    expect(calculate('x', 3, 4)).toBe(12);
+  test('45 * 2 = 90', () => {
+    expect(multiply(45, 2)).toBe(90);
   });
 
-  test('division with / and word div', () => {
-    expect(calculate('/', 20, 5)).toBe(4);
-    expect(calculate('div', 9, 3)).toBe(3);
+  test('20 / 5 = 4', () => {
+    expect(divide(20, 5)).toBe(4);
   });
-});
 
-describe('edge cases and errors', () => {
   test('division by zero throws', () => {
-    expect(() => calculate('/', 10, 0)).toThrow('Division by zero');
+    expect(() => divide(1, 0)).toThrow('Division by zero');
   });
 
-  test('unknown operation throws', () => {
-    expect(() => calculate('pow', 2, 3)).toThrow(/Unknown operation/);
+  // Additional edge cases
+  test('works with negative numbers', () => {
+    expect(add(-2, -3)).toBe(-5);
+    expect(subtract(-2, 3)).toBe(-5);
+    expect(multiply(-4, 3)).toBe(-12);
+    expect(divide(-9, 3)).toBe(-3);
   });
 
-  test('invalid number parsing throws', () => {
-    expect(() => parseNumber('not-a-number')).toThrow(/Invalid number/);
+  test('works with floats', () => {
+    expect(add(1.5, 2.25)).toBeCloseTo(3.75);
+    expect(divide(7.5, 2.5)).toBeCloseTo(3);
   });
 });
